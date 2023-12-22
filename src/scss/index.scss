@@ -1,6 +1,7 @@
 // Import vào. để có thể biên dịch
-@use "components/header/index.scss";
+@use "components/header";
 @use "base/reset.scss";
+@use "components/hero";
 
 // -- Utils --
 .container {
