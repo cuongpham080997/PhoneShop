@@ -2,6 +2,7 @@
 @use "components/header";
 @use "base/reset.scss";
 @use "components/hero";
+@use "components/feature-products";
 
 // -- Utils --
 .container {
@@ -9,4 +10,33 @@
   margin-left: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+// --
+// .fa-star,
+// .icon-cart {
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   display: inline-block;
+// }
+// -- Place holder --
+%icon {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+
+.fa-star {
+  background-image: url("/imgs/star.svg");
+  width: 2.4rem;
+  height: 2.4rem;
+
+  @extend %icon;
+}
+
+.icon-cart {
+  background-image: url("/imgs/cart.svg");
+  width: 1.6rem;
+  height: 1.6rem;
+
+  @extend %icon;
 }

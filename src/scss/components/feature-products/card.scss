@@ -1,0 +1,62 @@
+@use "../../base/variables" as *; // nhớ có as *;
+.card {
+  min-width: 25rem;
+  border-radius: 0.8rem;
+  box-shadow: 6px 6px 12px #e2ebfc, -6px -6px 12px #fff;
+
+  .card-body {
+    padding: 2rem 3rem 2rem 3rem;
+  }
+
+  .card-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .card-title,
+    .card-price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $clr-blue-dark;
+    }
+  }
+
+  .card-text {
+    // white-space: nowrap; //! cho chữ trên cùng 1 hàng(không tự động xuống dòng)
+    // text-overflow: ellipsis; //! những từ vượt quá phạm vi sẽ thành dấu ...
+    // overflow: hidden;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $clr-blue-dark;
+    margin-bottom: 1rem;
+  }
+  .card-body-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .btn-buy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+
+      padding: 0.4rem 0.6rem;
+      color: $clr-primary;
+      box-shadow: 2px 2px 4px #e2ebfc, -2px -2px 4px #fff;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: inset 1px 1px 3px #e2ebfc, inset -2px -2px 5px #fff;
+      }
+    }
+  }
+  .more {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: $clr-primary;
+  }
+}

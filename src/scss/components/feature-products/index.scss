@@ -1,0 +1,23 @@
+@use "../../base/variables" as *;
+@use "card";
+
+.product {
+  margin-bottom: 2rem;
+
+  h2 {
+    color: $clr-blue-dark;
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  .product-list {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    .card {
+      width: 30%;
+    }
+  }
+}
