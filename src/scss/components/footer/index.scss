@@ -1,0 +1,27 @@
+@use "../../base/variables" as *;
+
+footer {
+  background-color: $clr-primary;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

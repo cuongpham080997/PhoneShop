@@ -1,4 +1,4 @@
-//? -- Header --
+// -- Header --
 document.querySelectorAll(".nav-link").forEach((nav) => {
   console.log(nav);
 
@@ -14,27 +14,40 @@ document.querySelectorAll(".nav-link").forEach((nav) => {
   };
 });
 
-//? -- Card --
+// -- Card --
 /**
  * B1: Lấy tất cả các card
  * B2: Lấy button show more - less
  * B3: Gắn thuộc tính onclick - Xử lý logic
  */
+
+/**
+ * 1. innerHTML vs innerText vs textContent
+ */
 document.querySelectorAll(".card").forEach((card) => {
   const btn = card.querySelector("button.more");
-  const eleText = card.querySelector('.card-text span')
+  const eleText = card.querySelector(".card-text span");
 
-  if(!btn) return
+  if (!btn) return;
 
-  const text = eleText.innerText
+  const text = eleText.innerText;
 
   btn.onclick = () => {
     if (btn.innerText.toLowerCase() === "less") {
-      eleText.innerHTML = eleText.innerText.slice(0,20) + "..."
-      btn.innerHTML = 'more'
+      eleText.innerHTML = text.slice(0, 20) + "...";
+      btn.innerHTML = "more";
     } else {
       eleText.innerHTML = text;
-      btn.innerHTML = 'less'
+      btn.innerHTML = "less";
     }
   };
 });
+
+// -- Footer --
+const year = new Date().getFullYear();
+document.querySelector("footer .created-by").innerHTML = `NgoDai © ${year}`;
+
+// -- Back To Top --
+document.querySelector(".back-to-top").onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
