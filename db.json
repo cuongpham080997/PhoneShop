@@ -1,0 +1,20 @@
+
+{
+    "phones": [
+      {
+        "id": 1,
+        "name": "Iphone 13",
+        "price": 20,
+        "desc": "loremfasj fasd fas f",
+        "img": "public/imgs/product1.png"
+      },
+      {
+        "id": 2,
+        "name": "Iphone 14",
+        "price": 30,
+        "desc": "loremfasj fasd fas f",
+        "img": "public/imgs/product2.png"
+      }
+    ]
+  }
+  
