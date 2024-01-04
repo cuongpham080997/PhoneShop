@@ -1,4 +1,5 @@
 @use "../../base/variables" as *;
+@use "../../helper" as *;
 
 .hero {
   position: relative;
@@ -25,10 +26,15 @@
   .hero-content,
   .hero-img {
     flex-basis: 50%;
+    flex-grow: 1;
   }
 
   .hero-img {
     height: 100%;
+
+    @include responsive("md") {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -54,5 +60,27 @@
       color: $clr-secondary;
       margin-top: 1rem;
     }
+
+    @include responsive("md") {
+      h1 {
+        font-size: 6rem;
+      }
+    }
+
+    @include responsive("sm") {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  @include responsive("md") {
+    height: 40rem;
   }
 }
+
+// @include responsive("md") {
+//   .hero-container .hero-content h1 {
+//     font-size: 6rem;
+//   }
+// }

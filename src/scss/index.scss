@@ -6,6 +6,7 @@
 @use "components/footer";
 
 // -- Utils --
+@use "helper" as H;
 .container {
   margin-right: 2rem;
   margin-left: 2rem;
@@ -43,8 +44,45 @@
   @extend %icon;
 }
 
+.icon-menu {
+  @extend %icon;
+
+  background-image: url("../../public/imgs/menu.svg");
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
 .back-to-top {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+
+  // --
+  $lg: 1000px;
+  $md: 600px;
+
+  // // < 1000px red
+  // @media screen and (max-width: $lg) {
+  //   color: red;
+  // }
+
+  // // < 600px green
+  // @media screen and (max-width: $md) {
+  //   color: green;
+  // }
+
+
+  @include H.responsive("lg") {
+    color: red;
+  }
+
+  // < 600px green
+  // @media screen and (max-width: $md) {
+  //   color: green;
+  // }
+
+  @include H.responsive("md") {
+    color: green;
+  }
+
 }

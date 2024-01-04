@@ -5,68 +5,73 @@ responsive('md')
 responsive('lg')
 
 */
-.header {
-  position: fixed;
-  top: 0;
+.hero {
+  position: relative;
+  margin-top: 9rem;
+}
+.hero .hero-background {
+  position: absolute;
   left: 0;
-  z-index: 9999;
+  top: 0;
+  z-index: -1;
   width: 100%;
-  background-color: white;
+  height: 100%;
+}
+
+.hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 9rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  box-shadow: 0 2px 4px #e2ebfc;
+  height: 80rem;
+  padding: 4rem 0;
 }
-.header h1 {
-  font-size: 2.6rem;
-  font-weight: 600;
-  color: #2a73dd;
+.hero-container .hero-content,
+.hero-container .hero-img {
+  flex-basis: 50%;
+  flex-grow: 1;
 }
-.header .navigation .nav-item {
-  --padding: 2.5rem;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
+.hero-container .hero-img {
+  height: 100%;
 }
-@media screen and (max-width: 62em) {
-  .header .navigation .nav-item {
-    --padding: 0.8rem;
+@media screen and (max-width: 48em) {
+  .hero-container .hero-img {
+    display: none;
   }
 }
-.header .navigation .nav-link {
-  text-decoration: none;
-  color: black;
-  font-size: 1.6rem;
-}
-.header .navigation .nav-link::after {
-  content: "";
-  display: block;
+.hero-container .hero-img img {
   width: 100%;
-  height: 0.2rem;
-  background-color: #2a73dd;
-  transform: scale(0);
-  transition: all 0.3s linear;
+  height: 100%;
+  object-fit: contain;
 }
-.header .navigation .nav-link:hover::after {
-  transform: scale(1);
-}
-.header .navigation .nav-link.nav-link__active {
-  font-weight: 600;
+.hero-container .hero-content h1 {
+  font-size: 7rem;
+  font-weight: 700;
   color: #2a73dd;
 }
-.header .navigation .nav-link.nav-link__active::after {
-  transform: scale(1);
+.hero-container .hero-content .hero-content__short {
+  color: #1d365e;
+  font-size: 2rem;
+  font-weight: 600;
 }
-.header .navigation ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+.hero-container .hero-content .hero-content__long {
+  color: #656774;
+  margin-top: 1rem;
 }
-.header .btn-menu,
-.header .small-menu {
+@media screen and (max-width: 48em) {
+  .hero-container .hero-content h1 {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 36em) {
+  .hero-container .hero-content h1 {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 48em) {
+  .hero-container {
+    height: 40rem;
+  }
+}/*# sourceMappingURL=index.css.map */nu {
   display: none;
 }
 @media screen and (max-width: 36em) {
@@ -474,6 +479,4 @@ footer {
   .back-to-top {
     color: green;
   }
-}
-
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

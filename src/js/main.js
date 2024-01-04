@@ -1,3 +1,5 @@
+import { elt } from "./utils.js";
+import { BASE_URL } from "./const.js";
 // -- Header --
 document.querySelectorAll(".nav-link").forEach((nav) => {
   console.log(nav);
@@ -69,7 +71,10 @@ document.querySelector(".back-to-top").onclick = () => {
 //? Hàm fetch có sẵn trên trình duyệt, sẽ nhận 2 tham số:
 //? Tham số thứ nhất: đường dẫn của api
 //? Tham số thứ hai: thông tin mà chúng ta gửi xuống BE
-fetch("http://localhost:3000/phones", {
+// fetch("http://localhost:3000/phones", {
+//   method: "get",
+// })
+fetch(`${BASE_URL}/products`, {
   method: "get",
 })
   // Sau khi phía BE trả dữ liệu về thành công thì sẽ gọi call back function và truyền dữ liệu vào cb function
@@ -111,7 +116,7 @@ fetch("http://localhost:3000/phones", {
     //               </div>
     //! Cách 1: không thể truyền vào 1 object (hạn chế)
     //        <!-- <button onclick="handleClick(${phone.id})" class="btn-buy"> -->
-    //! Cách 2: Render giao diện trước,bắt sự kiện sau sẽ không tối ưu hiệu suất.
+    //! Cách 2: Render giao diện trước,gắn sự kiện sau sẽ không tối ưu hiệu suất vì mỗi lần render giao diện xong sẽ có 1 cây DOM, thì ta tìm kiếm đúng button trong cây DOM để gắn sự kiện điều này tạo cho chúng ta thêm 1 bước thực thi
     //               <button data-full-name='hihi' data-id="${phone.id}" class="btn-buy">
     //               <i class="icon-cart"></i>
     //               Buy now
@@ -233,10 +238,10 @@ fetch("http://localhost:3000/phones", {
     });
   });
 
-  function handleClick(phone) {
-    console.log(phone);
-    alert(JSON.stringify(phone));
-  }
+function handleClick(phone) {
+  console.log(phone);
+  alert(JSON.stringify(phone));
+}
 
 function createElement(tagName, properties, children) {
   // Tạo element
@@ -249,33 +254,6 @@ function createElement(tagName, properties, children) {
   }
 
   ele.append(children);
-
-  return ele;
-}
-
-function elt(tagName, properties, ...children) {
-  // Tạo element
-  const ele = document.createElement(tagName);
-
-  // Gắn thuộc tính lên trên element
-  if (properties) {
-    for (const prop of Object.entries(properties)) {
-      const [key, value] = prop;
-      ele[key] = value;
-    }
-  }
-
-  // append chỉ chấp nhận là một element
-
-  if (Array.isArray(children)) {
-    children.forEach((child) => {
-      ele.append(child);
-    });
-  } else {
-    if (children) {
-      ele.append(children);
-    }
-  }
 
   return ele;
 }
@@ -312,10 +290,28 @@ document.body.append(Body());
 document.body.append(Footer());
 document.body.append(BackToTop());
 
-
 //! Thêm thuộc tính handleClick cho window
-//! window.handleClick = handleClick;
+window.handleClick = handleClick;
 /**
  *! Đối với inline function thì chúng ta không thể truyền kiểu Object type
  *! Chỉ được phép truyền primitive type
  */
+
+document.querySelector(".close").onclick = () => {
+  const menu = document.querySelector(".small-menu");
+  menu.classList.remove("active");
+};
+
+//* Khi start mới dự án thì mới dùng onclick
+//* Hình dung: ghi đè lên những giá trị của thuộc tính onclick
+//  document.querySelector('.btn-menu').onclick = () =>{
+//   const menu = document.querySelector('.small-menu')
+//   menu.classList.add('active')
+//  }
+
+//* Khi bảo trì dự án thì dùng addEventListenner
+//* Hình dung: không bị ghi đè và thực thi song song cả 2
+document.querySelector(".btn-menu").addEventListener("click", () => {
+  const menu = document.querySelector(".small-menu");
+  menu.classList.add("active");
+});

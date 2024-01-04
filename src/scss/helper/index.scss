@@ -1,0 +1,41 @@
+// tao object trong js
+$break-points: (
+  // 400px
+  xs: 25em,
+  // 576px
+  sm: 36em,
+  //   768px
+  md: 48em,
+  //   992px
+  lg: 62em,
+  //1200px
+  xl: 75em,
+  //1400px
+  xxl: 87.5em
+);
+
+// function trong js
+@mixin responsive($size) {
+  // Kiểm tra coi thử key có tồn tại trong object
+  @if (map-has-key($map: $break-points, $key: $size)) {
+    // Lấy giá trị tương ứng với key của object
+    $value: map-get(
+      $map: $break-points,
+      $key: $size,
+    );
+
+    @media screen and (max-width: $value) {
+      // Truyền thuộc tính cần responsive
+      @content;
+    }
+  } @else {
+    @error $size + ' Không tồn tại.';
+  }
+}
+/**
+
+responsive('sm')
+responsive('md')
+responsive('lg')
+
+*/

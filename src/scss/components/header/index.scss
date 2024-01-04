@@ -1,7 +1,7 @@
 // Import biến ở file variable để chúng ta sử dụng.
 //  as * import vào và sử dụng đúng tên biến.
 @use "../../base/variables" as *; // nhớ có as *;
-
+@use "../../helper/" as *;
 .header {
   position: fixed;
   top: 0;
@@ -32,8 +32,19 @@
       // Cách tạo biến: $<ten_bien>
       $padding: 2.5rem;
 
-      padding-left: $padding;
-      padding-right: $padding;
+      // Tạo biến trong css: --[Ten_
+      --padding: 2.5rem;
+
+      // Cách sử dụng biến css
+      padding-left: var(--padding);
+      padding-right: var(--padding);
+
+      @include responsive("lg") {
+        // padding-left: 0.8rem;
+        // padding-right: 0.8rem;
+
+        --padding: 0.8rem;
+      }
     }
 
     .nav-link {
@@ -72,6 +83,52 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
+    }
+  }
+
+  .btn-menu,
+  .small-menu {
+    display: none;
+  }
+
+  @include responsive("sm") {
+    .navigation {
+      display: none;
+    }
+    .btn-menu {
+      display: block;
+    }
+
+    .small-menu.active {
+      display: block;
+      opacity: 1;
+    }
+    .small-menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: wheat;
+      height: 100vh;
+      padding: 2rem 4rem;
+      font-size: 2rem;
+      opacity: 0;
+      transition: all 2s;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 3rem;
+        background-color: transparent;
+        border: none;
+      }
     }
   }
 }
